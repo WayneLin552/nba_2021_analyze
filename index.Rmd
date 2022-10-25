@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "NBA 2021 Season Analysis"
+author: "Mouwei Lin (lm3756); Frank Li (zl3204); Linhao Yu (ly2590)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
