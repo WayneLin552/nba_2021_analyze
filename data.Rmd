@@ -1,8 +1,17 @@
 # Data 
 
 ## Sources
+The data is published on the NBA official website, in specific, you can:
+
+|==>Find 2021-2022 regular season data through this link: *[regular season](https://www.nba.com/stats/teams/traditional?Season=2021-22)
+
+|==>Find 2021-2022 playoff data through this link: *[playoff](https://www.nba.com/stats/teams/traditional?Season=2021-22&SeasonType=Playoffs)
+
+|==>Find final champion data trough this link: *[final champion](https://www.nba.com/stats/team/1610612744/traditional)
 
 ## Cleaning / transformation
+
+
 
 ## Missing value analysis
 
