@@ -89,7 +89,7 @@ All the advanced stats from NBA website can go back to the 1996-97 season; howev
 
 |==>**Who collect the data**: usually all the data was collected by NBA official. 
 
-|==>**Format of data**: because there is no cvs file provided, we use *revest* package to read the data directly from html. So it will be several data frames and all features are numeric data types.
+|==>**Format of data**: because there is no cvs file provided, we use *revest* , a R package to read the data directly from html. So it will be several data frames and all features are numeric data types.
 
 |==>**Frequency of updates**: according to NBA website's explanation, a player or team’s base statistics are updated simultaneously with the game and in real time. The advanced stats are updated between 10-15 minutes after a game finishes. Moreover, because of the data's own properties, it usually has very few updates once it is published.
 
