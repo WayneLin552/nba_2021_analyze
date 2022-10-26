@@ -1,11 +1,106 @@
 # Proposal
 
 ## Research topic
-NBA is one of the most famous sports leagues in the world. In this final project, we will focus on data analysis of NBA regular season and playoff in season 2021 to 2022. 
+NBA is one of the most famous sports leagues in the world. In this final project, we will focus on data analysis of NBA regular season and playoffs in season 2021 to 2022. 
 
-In regular season, we will analyze each team's performance base on conference. Performance will include: (). Those features can be divided by offensive and defensive statistics. We will use some visualization techniques to check different conference's style. Then determine if those styles have significant influence on teams' victory rate.
+In regular season, we will analyze each team's performance base on conference. Performance will include: **(!!!LINHAO YU WRITE HERE!!!)**. Those features can be divided by offensive and defensive statistics. We will use some visualization techniques to check different conference's styles. Then determine if those styles have significant influence on teams' victory rate.
 
-In playoff, firstly, we will do similar analyze like regular season. Then we will discuss why those teams perform better than those teams that can not enter the playoff competitions. Finally, we will analyze the teams played in NBA finals in 2021, to see their performance in every round.
+In playoffs, firstly, we will do similar analyze like regular season. Then we will discuss why those teams perform better than those that can not enter the playoffs. Finally, we will analyze the teams played in NBA finals in 2021, to see their performance in every round.
 
 ## Data availability
+In this *[link](https://www.nba.com/stats/help/faq), NBA official website has clearly explained how they collected and distributed those data. In conclusion, the information will be like following:
+
+|==>**How data collected**: according to NBA official's explanation, all those data, which include 
+
+-GP: Games Played
+
+-W: Wins
+
+-L: Losses
+
+-WIN%: Win Percentage
+
+-MIN: Minutes Played
+
+-PTS: Points
+
+-FGM: Field Goals Made
+
+-FGA: Field Goals Attempted
+
+-FG%: Field Goal Percentage
+
+-3PM: 3 Point Field Goals Made
+
+-3PA: 3 Point Field Goals Attempted
+
+-3P%: 3 Point Field Goal Percentage
+
+-FTM: Free Throws Made
+
+-FTA: Free Throws Attempted
+
+-FT%: Free Throw Percentage
+
+-OREB: Offensive Rebounds
+
+-DREB: Defensive Rebounds
+
+-REB: Rebounds
+
+-AST: Assists
+
+-TOV: Turnovers
+
+-STL: Steals
+
+-BLK: Blocks
+
+-BLKA: Blocks Against
+
+-PF: Personal Fouls
+
+-PFD: Personal Fouls Drawn
+
+-+/-: Plus-Minus
+
+
+were collected by Using cameras installed in the catwalks of every NBA arena, Second Spectrum software tracks the movements of every player on the court and the basketball 25 times per second. You can go this *[page](https://www.nba.com/stats/players/catch-shoot) for more information. 
+The tools to collect those data are most advanced and accurate. 
+All the advanced stats from NBA website can go back to the 1996-97 season; however their base stats go back to the inaugural 1946-47 season. Every box score has been digitized and those go back to the 1946-47 season as well. Their lineup data goes back to 2008. Certain stats were not recorded from the beginning of the NBA. Here’s a list of years when some base stats began being recorded:
+
+-Rebounds: 1950-1951	
+
+-Minutes: 1951-1952	
+
+-Games Started: 1970-1971
+
+-Steals: 1973-1974	
+
+-Blocks: 1973-1974	
+
+-Off Rebounds: 1973-1974
+
+-Def Rebounds: 1973-1974	
+
+-Turnovers: 1977-1978	
+
+-3 Point Field Goals: 1979-1980
+
+|==>**Who collect the data**: usually all the data was collected by NBA official. 
+
+|==>**Format of data**: because there is no cvs file provided, we use *revest* package to read the data directly from html. So it will be several data frames and all features are numeric data types.
+
+|==>**Frequency of updates**: according to NBA website's explanation, a player or team’s base statistics are updated simultaneously with the game and in real time. The advanced stats are updated between 10-15 minutes after a game finishes. Moreover, because of the data's own properties, it usually has very few updates once it is published.
+
+|==>**Sources:**
+We will post the sources' links here again:
+
+|==>Find 2021-2022 regular season data through this link: *[regular season](https://www.nba.com/stats/teams/traditional?Season=2021-22)
+
+|==>Find 2021-2022 playoff data through this link: *[playoff](https://www.nba.com/stats/teams/traditional?Season=2021-22&SeasonType=Playoffs)
+
+|==>Find final champion data trough this link: *[final champion](https://www.nba.com/stats/team/1610612744/traditional)
+
+
 
