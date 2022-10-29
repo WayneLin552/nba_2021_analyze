@@ -3,7 +3,9 @@
 ## Research topic
 NBA is one of the most famous sports leagues in the world. In this final project, we will focus on data analysis of NBA regular season and playoffs in season 2021 to 2022. 
 
+
 In regular season, we will analyze each team's performance base on conference. Performance will include: **(!!!LINHAO YU WRITE HERE, delete it after finished it!!!)**. Those features can be divided by offensive and defensive statistics. We will use some visualization techniques to check different conference's styles. Then determine if those styles have significant influence on teams' victory rate.
+
 
 In playoffs, firstly, we will do similar analyze like regular season. Then we will discuss why those teams perform better than those that can not enter the playoffs. Finally, we will analyze the teams played in NBA finals in 2021, to see their performance in every round.
 
