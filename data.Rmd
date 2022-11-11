@@ -11,7 +11,54 @@ The data is published on the NBA official website, in specific, you can:
 
 ## Cleaning / transformation
 
+First thing first, we road the data
+```{r}
+library(rvest)
+leader1 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA.com.html') %>%
+    html_nodes("table") %>%
+    html_table(header = T)
+
+leader2 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA2.com.html') %>%
+    html_nodes("table") %>%
+    html_table(header = T)
+
+ori_regular <- leader1[[3]][,1:28]
+ori_playoff <- leader2[[3]][,1:28]
+(head(ori_regular))
+(head(ori_playoff))
+
+```
+
+Second we do some cleaning.
+
+```{r}
+#Rename the first column as the original data do not have a column name.
+names(ori_regular)[1] <- "Rank"
+names(ori_playoff)[1] <- "Rank"
+```
+
+Third we do some transformation.
+```{r}
+ori_regular$`WIN%`<-ori_regular$`WIN%`*100
+ori_playoff$`WIN%`<-ori_playoff$`WIN%`*100
+```
+
+
+We have to admit that because those data is collected by NBA official with most advanced equipment, so it is quite clean and well structured. By carefully checking every rows and columns, we finally find some uncleaned data: a missing column name and not clear percentage numbers. 
+
+For further transformation, we can consider using standard scaler or log scaler for those numerical features, but this final project so far only focus on data visualization and analyzation, not about training a machine learning model, so we do not have to further scale those data. For data cleaning and transformation step, it is enough so far.
 
 
 ## Missing value analysis
 
+Now we go into deep to check the missing value.
+```{r}
+# we check if there is missing values in each column
+print('Missing values count in regular season:')
+(colSums(is.na(ori_regular)))
+print('Missing values count in playoff:')
+(colSums(is.na(ori_playoff)))
+```
+
+
+Good thing is there is no missing values inside, the dataset is somehow 'clean' and 'beautiful' enough.
