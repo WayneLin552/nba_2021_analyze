@@ -29,7 +29,7 @@ ori_playoff <- leader2[[3]][,1:28]
 
 ```
 
-Second we do some cleaning.
+Second, we do some cleaning.
 
 ```{r}
 #Rename the first column as the original data do not have a column name.
@@ -37,7 +37,7 @@ names(ori_regular)[1] <- "Rank"
 names(ori_playoff)[1] <- "Rank"
 ```
 
-Third we do some transformation.
+Third, we do some transformation.
 ```{r}
 ori_regular$`WIN%`<-ori_regular$`WIN%`*100
 ori_playoff$`WIN%`<-ori_playoff$`WIN%`*100
