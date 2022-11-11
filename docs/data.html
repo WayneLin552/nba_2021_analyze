@@ -23,7 +23,7 @@
 <meta name="author" content="Mouwei Lin (lm3756); Frank Li (zl3204); Linhao Yu (ly2590)" />
 
 
-<meta name="date" content="2022-10-26" />
+<meta name="date" content="2022-11-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -117,9 +117,50 @@
 </div>
 <div id="cleaning-transformation" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First thing first, we road the data</p>
+<pre><code>## # A tibble: 6 × 28
+##      `` Team     GP     W     L `WIN%`   Min   PTS   FGM   FGA `FG%` `3PM` `3PA`
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1 Phoe…    82    64    18  0.78   48.1  115.  43.7  90.1  48.5  11.6  31.9
+## 2     2 Memp…    82    56    26  0.683  48.2  116.  43.5  94.4  46.1  11.5  32.7
+## 3     3 Gold…    82    53    29  0.646  48.1  111   40.5  86.4  46.9  14.3  39.4
+## 4     3 Miam…    82    53    29  0.646  48.4  110   39.6  84.8  46.7  13.6  35.8
+## 5     5 Dall…    82    52    30  0.634  48.2  108   39.3  85.1  46.1  13.1  37.4
+## 6     6 Bost…    82    51    31  0.622  48.5  112.  40.7  87.4  46.6  13.2  37.1
+## # … with 15 more variables: `3P%` &lt;dbl&gt;, FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, `FT%` &lt;dbl&gt;,
+## #   OREB &lt;dbl&gt;, DREB &lt;dbl&gt;, REB &lt;dbl&gt;, AST &lt;dbl&gt;, TOV &lt;dbl&gt;, STL &lt;dbl&gt;,
+## #   BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, PF &lt;dbl&gt;, PFD &lt;dbl&gt;, `+/-` &lt;dbl&gt;</code></pre>
+<pre><code>## # A tibble: 6 × 28
+##      `` Team     GP     W     L `WIN%`   Min   PTS   FGM   FGA `FG%` `3PM` `3PA`
+##   &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1 Gold…    22    16     6  0.727    48  112.  41.4  86.1  48    14    37.3
+## 2     2 Miam…    18    11     7  0.611    48  104.  38    85.3  44.5  10.9  34.8
+## 3     3 Bost…    24    14    10  0.583    48  106.  36.7  81.8  44.9  13.7  36.6
+## 4     3 Milw…    12     7     5  0.583    48  103.  38.5  88    43.8  10.6  32.3
+## 5     5 Phoe…    13     7     6  0.538    48  108.  41.2  82.8  49.7   9.8  27.2
+## 6     6 Dall…    18     9     9  0.5      48  106.  36.3  80.8  44.9  15.8  41.5
+## # … with 15 more variables: `3P%` &lt;dbl&gt;, FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, `FT%` &lt;dbl&gt;,
+## #   OREB &lt;dbl&gt;, DREB &lt;dbl&gt;, REB &lt;dbl&gt;, AST &lt;dbl&gt;, TOV &lt;dbl&gt;, STL &lt;dbl&gt;,
+## #   BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, PF &lt;dbl&gt;, PFD &lt;dbl&gt;, `+/-` &lt;dbl&gt;</code></pre>
+<p>Second we do some cleaning.</p>
+<p>Third we do some transformation.</p>
+<p>We have to admit that because those data is collected by NBA official with most advanced equipment, so it is quite clean and well structured. By carefully checking every rows and columns, we finally find some uncleaned data: a missing column name and not clear percentage numbers.</p>
+<p>For further transformation, we can consider using standard scaler or log scaler for those numerical features, but this final project so far only focus on data visualization and analyzation, not about training a machine learning model, so we do not have to further scale those data. For data cleaning and transformation step, it is enough so far.</p>
 </div>
 <div id="missing-value-analysis" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we go into deep to check the missing value.</p>
+<pre><code>## [1] &quot;Missing values count in regular season:&quot;</code></pre>
+<pre><code>## Rank Team   GP    W    L WIN%  Min  PTS  FGM  FGA  FG%  3PM  3PA  3P%  FTM  FTA 
+##    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+##  FT% OREB DREB  REB  AST  TOV  STL  BLK BLKA   PF  PFD  +/- 
+##    0    0    0    0    0    0    0    0    0    0    0    0</code></pre>
+<pre><code>## [1] &quot;Missing values count in playoff:&quot;</code></pre>
+<pre><code>## Rank Team   GP    W    L WIN%  Min  PTS  FGM  FGA  FG%  3PM  3PA  3P%  FTM  FTA 
+##    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
+##  FT% OREB DREB  REB  AST  TOV  STL  BLK BLKA   PF  PFD  +/- 
+##    0    0    0    0    0    0    0    0    0    0    0    0</code></pre>
+<p>Good thing is there is no missing values inside, the dataset is somehow ‘clean’ and ‘beautiful’ enough.</p>
 
 </div>
 </div>
