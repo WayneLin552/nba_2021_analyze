@@ -29,7 +29,7 @@ ori_playoff <- leader2[[3]][,1:28]
 
 ```
 
-Second we do some cleaning.
+Second, we do some cleaning.
 
 ```{r}
 #Rename the first column as the original data do not have a column name.
