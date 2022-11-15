@@ -1,13 +1,13 @@
 # Data 
 
 ## Sources
-The data is published on the NBA official website, in specific, you can:
+The data used in this analysis is collected and published on the NBA official website, the following links direct to the raw data.
 
-|==>Find 2021-2022 regular season data through this link: *[regular season](https://www.nba.com/stats/teams/traditional?Season=2021-22)
+|==> Data of 2021-2022 regular season: *[regular season](https://www.nba.com/stats/teams/traditional?Season=2021-22)
 
-|==>Find 2021-2022 playoff data through this link: *[playoff](https://www.nba.com/stats/teams/traditional?Season=2021-22&SeasonType=Playoffs)
+|==> Data of 2021-2022 playoff: *[playoff](https://www.nba.com/stats/teams/traditional?Season=2021-22&SeasonType=Playoffs)
 
-|==>Find final champion data trough this link: *[final champion](https://www.nba.com/stats/team/1610612744/traditional)
+|==> Data of Final Champions: *[final champion](https://www.nba.com/stats/team/1610612744/traditional)
 
 ## Cleaning / transformation
 
@@ -17,7 +17,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
 ```
 
 
-First thing first, we load the data
+First of all, we will load the data for preprocessing.
+
 ```{r}
 library(rvest)
 leader1 = read_html('./docs/data/Teams Traditional _ Stats _ NBA.com.html') %>%
@@ -35,7 +36,7 @@ ori_playoff <- leader2[[3]][,1:28]
 
 ```
 
-Second, we do some cleaning.
+Secondly, we will perform data cleaning.
 
 ```{r}
 #Rename the first column as the original data do not have a column name.
@@ -43,21 +44,21 @@ names(ori_regular)[1] <- "Rank"
 names(ori_playoff)[1] <- "Rank"
 ```
 
-Third, we do some transformation.
+Thirdly, we do some transformation.
 ```{r}
 ori_regular$`WIN%`<-ori_regular$`WIN%`*100
 ori_playoff$`WIN%`<-ori_playoff$`WIN%`*100
 ```
 
 
-We have to admit that because those data is collected by NBA official with most advanced equipment, so it is quite clean and well structured. By carefully checking every rows and columns, we finally find some uncleaned data: a missing column name and not clear percentage numbers. 
+We noticed that the data is mostly clean and well structured, since it was collected by NBA officially. By scrutinizing the whole data, the major data cleaning we performed were fixing column names and unclear percentage values. 
 
-For further transformation, we can consider using standard scaler or log scaler for those numerical features, but this final project so far only focus on data visualization and analyzation, not about training a machine learning model, so we do not have to further scale those data. For data cleaning and transformation step, it is enough so far.
+For further transformations, we would consider using standard scaler or log scaler for numerical features. Since the main goal for final project is about data visualization and analyzation, further scaling or tranforming of the data is not necessary. 
 
 
 ## Missing value analysis
 
-Now we go into deep to check the missing value.
+In this step, we will perform the missing value analysis.
 ```{r}
 # we check if there is missing values in each column
 print('Missing values count in regular season:')
@@ -67,4 +68,4 @@ print('Missing values count in playoff:')
 ```
 
 
-Good thing is there is no missing values inside, the dataset is somehow 'clean' and 'beautiful' enough.
+From the above tables we can see that there exist none missing values in our data. Hence, no filling of missing data is needed.
