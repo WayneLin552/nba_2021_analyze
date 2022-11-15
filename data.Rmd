@@ -11,7 +11,7 @@ The data is published on the NBA official website, in specific, you can:
 
 ## Cleaning / transformation
 
-First thing first, we road the data
+First thing first, we load the data
 ```{r}
 library(rvest)
 leader1 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA.com.html') %>%
