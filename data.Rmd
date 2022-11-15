@@ -11,15 +11,21 @@ The data used in this analysis is collected and published on the NBA official we
 
 ## Cleaning / transformation
 
+```{r, include=FALSE}
+# this prevents package loading message from appearing in the rendered version of your problem set
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
+```
+
+
 First of all, we will load the data for preprocessing.
 
 ```{r}
 library(rvest)
-leader1 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA.com.html') %>%
+leader1 = read_html('./docs/data/Teams Traditional _ Stats _ NBA.com.html') %>%
     html_nodes("table") %>%
     html_table(header = T)
 
-leader2 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA2.com.html') %>%
+leader2 = read_html('./docs/data/Teams Traditional _ Stats _ NBA2.com.html') %>%
     html_nodes("table") %>%
     html_table(header = T)
 
@@ -38,7 +44,7 @@ names(ori_regular)[1] <- "Rank"
 names(ori_playoff)[1] <- "Rank"
 ```
 
-Third, we do some transformation.
+Thirdly, we do some transformation.
 ```{r}
 ori_regular$`WIN%`<-ori_regular$`WIN%`*100
 ori_playoff$`WIN%`<-ori_playoff$`WIN%`*100
