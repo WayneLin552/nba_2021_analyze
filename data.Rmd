@@ -11,14 +11,20 @@ The data is published on the NBA official website, in specific, you can:
 
 ## Cleaning / transformation
 
+```{r, include=FALSE}
+# this prevents package loading message from appearing in the rendered version of your problem set
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
+```
+
+
 First thing first, we load the data
 ```{r}
 library(rvest)
-leader1 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA.com.html') %>%
+leader1 = read_html('./docs/data/Teams Traditional _ Stats _ NBA.com.html') %>%
     html_nodes("table") %>%
     html_table(header = T)
 
-leader2 = read_html('./docs/rawdata/Teams Traditional _ Stats _ NBA2.com.html') %>%
+leader2 = read_html('./docs/data/Teams Traditional _ Stats _ NBA2.com.html') %>%
     html_nodes("table") %>%
     html_table(header = T)
 
