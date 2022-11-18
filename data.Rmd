@@ -67,5 +67,17 @@ print('Missing values count in playoff:')
 (colSums(is.na(ori_playoff)))
 ```
 
+Using library **redav** to create two missing values visualization.
+
+We can very clearly see from those two graphs that there is no missing value in both regular season and playoffs.
+
+```{r}
+library(redav)
+
+plot_missing(ori_regular, percent = FALSE)
+plot_missing(ori_playoff, percent = FALSE)
+
+```
+
 
 From the above tables we can see that there exist none missing values in our data. Hence, no filling of missing data is needed.
