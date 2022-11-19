@@ -79,5 +79,41 @@ plot_missing(ori_playoff, percent = FALSE)
 
 ```
 
+What's more, I create a heapmap to show the missing values. Still, we can see from those two heatmaps clearly that there is no missing values.
+
+```{r}
+library(dplyr)
+library(tibble)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+# For playoff 
+tidy_playoff <- ori_playoff %>% 
+    #rownames_to_column("id") %>% 
+    gather(key, value, -Team) %>% 
+    mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+ggplot(tidy_playoff, aes(x = key, y = fct_rev(Team), fill = missing)) +
+  geom_tile(color = "white") + 
+  ggtitle("playoff with NAs added") +
+  ylab('') + 
+  scale_fill_viridis_d() + # discrete scale
+  theme_bw()
+
+# For regular season
+tidy_regular <- ori_regular %>% 
+    #rownames_to_column("id") %>% 
+    gather(key, value, -Team) %>% 
+    mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+ggplot(tidy_regular, aes(x = key, y = fct_rev(Team), fill = missing)) +
+  geom_tile(color = "white") + 
+  ggtitle("playoff with NAs added") +
+  ylab('') + 
+  scale_fill_viridis_d() + # discrete scale
+  theme_bw()
+```
+
+
 
 From the above tables we can see that there exist none missing values in our data. Hence, no filling of missing data is needed.
