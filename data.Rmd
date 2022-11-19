@@ -117,3 +117,11 @@ ggplot(tidy_regular, aes(x = key, y = fct_rev(Team), fill = missing)) +
 
 
 From the above tables we can see that there exist none missing values in our data. Hence, no filling of missing data is needed.
+
+
+Last thing we do is storing above data we cleaned, for the next step.
+```{r}
+write.csv(ori_playoff,"./docs/data/playoff.csv", row.names = FALSE)
+write.csv(ori_regular,"./docs/data/regular.csv", row.names = FALSE)
+```
+
