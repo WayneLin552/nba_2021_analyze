@@ -1,1 +1,16 @@
 # Results
+
+First thing first, that's load the data we cleaned on **data** page.
+
+```{r}
+playoff<-read.csv(file = './docs/data/playoff.csv')
+regular<-read.csv(file = './docs/data/regular.csv')
+```
+
+
+## 1.XXXX
+
+```{r}
+
+```
+
