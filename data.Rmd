@@ -42,12 +42,20 @@ Secondly, we will perform data cleaning.
 #Rename the first column as the original data do not have a column name.
 names(ori_regular)[1] <- "Rank"
 names(ori_playoff)[1] <- "Rank"
+
+#Factor the Team and Rand column, make it easy to analyze.
+ori_playoff$Team = as.factor(ori_playoff$Team)
+ori_playoff$Rank = as.factor(ori_playoff$Rank)
+ori_regular$Team = as.factor(ori_regular$Team)
+ori_regular$Rank = as.factor(ori_regular$Rank)
 ```
 
-Thirdly, we do some transformation.
+
+Thirdly, we do some transformation, we add a new column **Enter** in regular season, if Enter is True, it means this team enter the playoff, otherwise it does not enter playoff.
 ```{r}
 ori_regular$`WIN%`<-ori_regular$`WIN%`*100
 ori_playoff$`WIN%`<-ori_playoff$`WIN%`*100
+ori_regular$Enter = (ori_regular$Team %in% ori_playoff$Team)
 ```
 
 

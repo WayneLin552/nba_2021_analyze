@@ -10,3 +10,7 @@ results
 interactive-component
 conclusion
 xxxx
+points-with-rank-in-playoff-and-regular-season
+points-with-rank-in-playoff-and-regular-season-1
+point-field-goals-with-rank-in-playoff-and-regular-season
+field-goal-with-rank-in-playoff-and-regular-season

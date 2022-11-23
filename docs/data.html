@@ -23,7 +23,7 @@
 <meta name="author" content="Mouwei Lin (lm3756); Frank Li (zl3204); Linhao Yu (ly2590)" />
 
 
-<meta name="date" content="2022-11-18" />
+<meta name="date" content="2022-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +148,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#points-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.1</b> 1. Points with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#point-field-goals-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.2</b> 2. 3 Point Field Goals with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#field-goal-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.3</b> 2. Field Goal with Rank in Playoff and Regular Season</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -222,10 +227,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Secondly, we will perform data cleaning.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename the first column as the original data do not have a column name.</span></span>
 <span id="cb5-2"><a href="data.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ori_regular)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Rank&quot;</span></span>
-<span id="cb5-3"><a href="data.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ori_playoff)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Rank&quot;</span></span></code></pre></div>
-<p>Thirdly, we do some transformation.</p>
+<span id="cb5-3"><a href="data.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ori_playoff)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Rank&quot;</span></span>
+<span id="cb5-4"><a href="data.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="data.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Factor the Team and Rand column, make it easy to analyze.</span></span>
+<span id="cb5-6"><a href="data.html#cb5-6" aria-hidden="true" tabindex="-1"></a>ori_playoff<span class="sc">$</span>Team <span class="ot">=</span> <span class="fu">as.factor</span>(ori_playoff<span class="sc">$</span>Team)</span>
+<span id="cb5-7"><a href="data.html#cb5-7" aria-hidden="true" tabindex="-1"></a>ori_playoff<span class="sc">$</span>Rank <span class="ot">=</span> <span class="fu">as.factor</span>(ori_playoff<span class="sc">$</span>Rank)</span>
+<span id="cb5-8"><a href="data.html#cb5-8" aria-hidden="true" tabindex="-1"></a>ori_regular<span class="sc">$</span>Team <span class="ot">=</span> <span class="fu">as.factor</span>(ori_regular<span class="sc">$</span>Team)</span>
+<span id="cb5-9"><a href="data.html#cb5-9" aria-hidden="true" tabindex="-1"></a>ori_regular<span class="sc">$</span>Rank <span class="ot">=</span> <span class="fu">as.factor</span>(ori_regular<span class="sc">$</span>Rank)</span></code></pre></div>
+<p>Thirdly, we do some transformation, we add a new column <strong>Enter</strong> in regular season, if Enter is True, it means this team enter the playoff, otherwise it does not enter playoff.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ori_regular<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="ot">&lt;-</span>ori_regular<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb6-2"><a href="data.html#cb6-2" aria-hidden="true" tabindex="-1"></a>ori_playoff<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="ot">&lt;-</span>ori_playoff<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<span id="cb6-2"><a href="data.html#cb6-2" aria-hidden="true" tabindex="-1"></a>ori_playoff<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="ot">&lt;-</span>ori_playoff<span class="sc">$</span><span class="st">`</span><span class="at">WIN%</span><span class="st">`</span><span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb6-3"><a href="data.html#cb6-3" aria-hidden="true" tabindex="-1"></a>ori_regular<span class="sc">$</span>Enter <span class="ot">=</span> (ori_regular<span class="sc">$</span>Team <span class="sc">%in%</span> ori_playoff<span class="sc">$</span>Team)</span></code></pre></div>
 <p>We noticed that the data is mostly clean and well structured, since it was collected by NBA officially. By scrutinizing the whole data, the major data cleaning we performed were fixing column names and unclear percentage values.</p>
 <p>For further transformations, we would consider using standard scaler or log scaler for numerical features. Since the main goal for final project is about data visualization and analyzation, further scaling or tranforming of the data is not necessary.</p>
 </div>
@@ -236,10 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-2"><a href="data.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&#39;Missing values count in regular season:&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Missing values count in regular season:&quot;</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(ori_regular)))</span></code></pre></div>
-<pre><code>## Rank Team   GP    W    L WIN%  Min  PTS  FGM  FGA  FG%  3PM  3PA  3P%  FTM  FTA 
-##    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 
-##  FT% OREB DREB  REB  AST  TOV  STL  BLK BLKA   PF  PFD  +/- 
-##    0    0    0    0    0    0    0    0    0    0    0    0</code></pre>
+<pre><code>##  Rank  Team    GP     W     L  WIN%   Min   PTS   FGM   FGA   FG%   3PM   3PA 
+##     0     0     0     0     0     0     0     0     0     0     0     0     0 
+##   3P%   FTM   FTA   FT%  OREB  DREB   REB   AST   TOV   STL   BLK  BLKA    PF 
+##     0     0     0     0     0     0     0     0     0     0     0     0     0 
+##   PFD   +/- Enter 
+##     0     0     0</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&#39;Missing values count in playoff:&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Missing values count in playoff:&quot;</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(ori_playoff)))</span></code></pre></div>

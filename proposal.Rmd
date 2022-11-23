@@ -28,13 +28,13 @@ In this *[link](https://www.nba.com/stats/help/faq), NBA official website has cl
 
 -FGA: Field Goals Attempted
 
--FG%: Field Goal Percentage
+-FG.: Field Goal Percentage
 
 -3PM: 3 Point Field Goals Made
 
 -3PA: 3 Point Field Goals Attempted
 
--3P%: 3 Point Field Goal Percentage
+-3P.: 3 Point Field Goal Percentage
 
 -FTM: Free Throws Made
 
@@ -64,6 +64,7 @@ In this *[link](https://www.nba.com/stats/help/faq), NBA official website has cl
 
 -+/-: Plus-Minus
 
+-Enter: Weather or not This Team Enter Playoff
 
 were collected by Using cameras installed in the catwalks of every NBA arena, Second Spectrum software tracks the movements of every player on the court and the basketball 25 times per second. You can go this *[page](https://www.nba.com/stats/players/catch-shoot) for more information. 
 The tools to collect those data are most advanced and accurate. 
