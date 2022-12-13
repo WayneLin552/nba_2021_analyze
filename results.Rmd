@@ -20,7 +20,7 @@ regular$Rank = as.factor(regular$Rank)
 ```
 
 
-## 1. Points with Rank in Playoff and Regular Season
+##  Points with Rank in Playoff and Regular Season
 
 ```{r}
 library(ggplot2)
@@ -51,7 +51,7 @@ While we look back in regular season, things are quite different. There is a ver
 
 
 
-## 2. 3 Point Field Goals with Rank in Playoff and Regular Season
+##  3 Point Field Goals with Rank in Playoff and Regular Season
 
 ```{r}
 library(patchwork)
@@ -95,7 +95,7 @@ When we look at regular season, will can find that strong teams (who enter playo
 
 
 
-## 2. Field Goal with Rank in Playoff and Regular Season
+##  Field Goal with Rank in Playoff and Regular Season
 
 ```{r}
 #plot scatter plot with smooth line in playoff about field goals
@@ -136,4 +136,111 @@ In playoff, things are a bit different now, although the trend is very weak, fie
 
 
 In regular season this trend becomes very notable. Strong teams always have higher field goals made and field goals percentage while weak teams have lower. They have a very clear level gap.
+
+##  Free Throw with Rank in Playoff and Regular Season
+
+```{r}
+#plot scatter plot with smooth line in playoff about Free Throw 
+g_playoff <- ggplot(data = playoff,aes(x=Rank, y=FTM))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team))+
+  geom_smooth(aes(x=as.integer(Rank)))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Free Throws Made and Free Throws \nPercentage in Playoff')+
+  ylab('Free Throws Made')
+g_playoff2 <- ggplot(data = playoff,aes(x=Rank, y=FT.))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team))+
+  geom_smooth(aes(x=as.integer(Rank), y=FT.))+
+  theme(axis.text.x = element_text(angle=90))+
+  ylab('Free Throws Percentage')
+
+g_playoff / g_playoff2 + plot_layout(guides = 'collect')
+
+#plot scatter plot with smooth line in regular about Free Throw 
+g_regular <- ggplot(data = regular,aes(x=Rank, y=FTM))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team,shape=Enter))+
+  geom_smooth(aes(x=as.integer(Rank), y=FTM))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Free Throws Made and Free Throws \nPercentage in Regular')+
+  ylab('Free Throws Made')
+g_regular2 <- ggplot(data = regular,aes(x=Rank, y=FT.))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team,shape=Enter))+
+  geom_smooth(aes(x=as.integer(Rank), y=FT.))+
+  theme(axis.text.x = element_text(angle=90))+
+  ylab('Free Throws Percentage')
+
+g_regular / g_regular2 + plot_layout(guides = 'collect')
+```
+
+Now we will analyze the effect of Free Throws. Free throws are generally awarded after a foul on the shooter by the opposing team, analogous to penalty shots in other team sports. Free throws are also awarded in other situations, including technical fouls, and when the fouling team has entered the bonus/penalty situation. Also, depending on the situation, a player may be awarded between one and three free throws. Each successful free throw is worth one point.
+
+Intuitively thinking, Free throws serve as a supporting factor for winning, not the key factor, since Free Throws only worth one point each, and the accuracy depends on the player heavily. We should not expect more Free Throws resulting in higher rank.
+
+As expected, in Playoff the Free Throws made does not lead to a higher ranking. In fact, the team in the first place even has a low amount of Free Throws made. 
+
+This happened again in the analysis in Regular Season, in Regular Season the Free Throws made also does not lead to a higher ranking. In fact, the team in the first place even has a low amount of Free Throws made in general.
+
+##  Rebounds made and Rank in Playoff and Regular Season
+
+```{r}
+#plot scatter plot with smooth line in playoff about Rebounds Made
+ggplot(data = playoff,aes(x=Rank, y=REB))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team))+
+  geom_smooth(aes(x=as.integer(Rank)))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Rebounds Made in Playoff')+
+  ylab('Rebounds Made')
+
+
+
+#plot scatter plot with smooth line in regular about Rebounds Made
+ggplot(data = regular,aes(x=Rank, y=REB))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team,shape=Enter))+
+  geom_smooth(aes(x=as.integer(Rank), y=REB))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Rebounds Made in Regular')+
+  ylab('Rebounds Made')
+
+
+```
+
+Then we will analyze the effect of Rebounds made. A rebound, or board, is a statistic awarded to a player who retrieves the ball after a missed field goal or free throw.Rebounds in basketball are a routine part in the game; if a shot is successfully made possession of the ball will change, otherwise the rebound allows the defensive team to take possession. Rebounds are also given to a player who tips in a missed shot on his team's offensive end. A rebound can be grabbed by either an offensive player or a defensive player.
+
+Intuitively thinking, Rebounds made serve as a key factor for winning, since each rebound means the opportunity for a team to be ofensive, and have the change to score points. We should expect more rebounds being made resulting in higher rank.
+
+As expected, in Playoff the Rebounds made does lead to a higher ranking. In fact, the team in the first place even has a high amount of rebounds made. 
+
+This happened again in the analysis in Regular Season more obviously, in Regular Season the rebounds made also leads to a higher ranking. In fact, the team in the first place even has a how amount of rebounds made in general.
+
+
+##  Personal Fouls made and Rank in Playoff and Regular Season
+
+```{r}
+#plot scatter plot with smooth line in playoff about Personal Fouls
+ggplot(data = playoff,aes(x=Rank, y=PF))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team))+
+  geom_smooth(aes(x=as.integer(Rank)))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Personal Fouls Made in Playoff')+
+  ylab('Personal Fouls Made')
+
+
+
+#plot scatter plot with smooth line in regular about Personal Fouls
+ggplot(data = regular,aes(x=Rank, y=PF))+
+  geom_point(size=3.0,stroke=0.1,aes(color=Team,shape=Enter))+
+  geom_smooth(aes(x=as.integer(Rank), y=PF))+
+  theme(axis.text.x = element_text(angle=90))+
+  ggtitle('Personal Fouls Made in Regular')+
+  ylab('Personal Fouls Made')
+
+
+```
+
+Finally we will analyze the effect of Personal Fouls. A personal foul is a breach of the rules that concerns illegal personal contact with an opponent. It is the most common type of foul in basketball. A player fouls out on reaching a limit on personal fouls for the game and is disqualified from participation in the remainder of the game. Players routinely initiate illegal contact to purposely affect the play, hoping it is seen as too minor to be ruled a foul. The threshold is subjective and varies among officials and from game to game. Most contact fouls are not regarded as unsportsmanlike.
+
+Intuitively thinking, Personal Fouls should have a negative correlation with ranking, since Personal Fouls will provide more attacking chance for the opposite team, and the player might have to retreat. We should expect less Personal Fouls in higher rank.
+
+As expected, in Playoff less Personal Fouls does lead to a higher ranking. In fact, the team in the first place even has a low amount of Personal Fouls. 
+
+This does not happened again in the analysis in Regular Season, in Regular Season less Personal Fouls does not lead to a higher ranking from the plot. One of the reasons could be the skill differences are to large between teams. Personal Fouls factor is not strong enough to secure a high rank, although more attacking opportunities were provided.
 
