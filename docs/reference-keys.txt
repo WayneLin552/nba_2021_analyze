@@ -1,0 +1,17 @@
+introduction
+proposal
+research-topic
+data-availability
+data
+sources
+cleaning-transformation
+missing-value-analysis
+results
+points-with-rank-in-playoff-and-regular-season
+point-field-goals-with-rank-in-playoff-and-regular-season
+field-goal-with-rank-in-playoff-and-regular-season
+free-throw-with-rank-in-playoff-and-regular-season
+rebounds-made-and-rank-in-playoff-and-regular-season
+personal-fouls-made-and-rank-in-playoff-and-regular-season
+interactive-component
+conclusion
