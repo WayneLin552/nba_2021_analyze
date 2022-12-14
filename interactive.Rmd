@@ -4,7 +4,7 @@ In this part, we use two interactive lollipop charts to visualize different stat
 There are 8 statistics to choose from: field goals made(FGM), 3 point field goals made(3PM), free throws made(FTM), assists(AST), offensive rebounds(OREB), defensive rebounds(DREB), blocks(BLK) and steals(STL). One can use the buttons at the top to select an interested statistics and see the change. 
 
 
-For the interactive plots, please click on the links below to access:
+For the interactive lollipop plots, please click on the links below to access:
 
 **[Regular season](interaction_regular.html)**
 
