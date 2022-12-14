@@ -4,5 +4,6 @@ In this part, we use two interactive lollipop charts to visualize different stat
 
 For the interactive component part, please click on this link below to access it:
 
-**[Interactive Link](interaction_demo.html)**
+**[Regular season](interaction_regular.html)**
 
+**[Playoff](interaction_playoff.html)**
