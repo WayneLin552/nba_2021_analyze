@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<!-- Add buttons -->
+<button onclick="update('FGM')">FGM</button>
+<button onclick="update('3PM')">3PM</button>
+<button onclick="update('FTM')">FTM</button>
+<button onclick="update('AST')">AST</button>
+<button onclick="update('OREB')">OREB</button>
+<button onclick="update('DREB')">DREB</button>
+<button onclick="update('BLK')">BLK</button>
+<button onclick="update('STL')">STL</button>
+
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+
+// set the dimensions and margins of the graph
+const margin = {top: 50, right: 30, bottom: 95, left: 60},
+    width = 500 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+const svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+// Initialize the X axis
+const x = d3.scaleBand()
+  .range([ 0, width ])
+  .padding(0.2);
+const xAxis = svg.append("g")
+  .attr("transform", `translate(0,${height})`);
+
+function getColor(d) {
+  if (d.Conference === "W") {
+    return "#b1b4ce";
+  } else {
+    return "#3e4f88";
+  }
+}
+
+// Initialize the Y axis
+const y = d3.scaleLinear()
+  .range([ height, 0]);
+const yAxis = svg.append("g")
+  .attr("class", "myYaxis");
+  
+  
+// A function that create / update the plot for a given variable:
+function update(selectedVar) {
+
+  // Parse the Data
+  d3.csv("https://raw.githubusercontent.com/WayneLin552/nba_2021_analyze/main/docs/data/regular.csv").then( function(data) {
+
+    // X axis
+    x.domain(data.map(d => d.Team));
+    xAxis.transition().duration(1000)
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+    // Add Y axis
+    y.domain([0, d3.max(data, d => +d[selectedVar]) ]);
+    yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+    // variable u: map data to existing bars
+    const u = svg.selectAll(".myLine")
+      .data(data)
+
+    // update bars
+    u.join("line")
+      .attr("class","myLine")
+      .transition()
+      .duration(1000)
+        .attr("x1", d => x(d.Team)+5.8)
+        .attr("x2", d => x(d.Team)+5.8)
+        .attr("y1", y(0))
+        .attr("y2", d => y(d[selectedVar]))
+        .attr("stroke","grey")
+        
+        //.attr("height", d => height - y(d[selectedVar]))
+        //.attr("fill", getColor)
+    const j = svg.selectAll("circle")
+      .data(data)
+    j
+      .join("circle")
+      .transition()
+      .duration(1000)
+        .attr("cx", d => x(d.Team)+5.8)
+        .attr("cy", d => y(d[selectedVar]))
+        .attr("r", 5)
+        .attr("fill", getColor)
+  })
+
+}
+
+
+// Initialize plot
+update('FGM')
+</script>
