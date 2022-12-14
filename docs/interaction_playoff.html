@@ -3,9 +3,6 @@
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
-<h1>NBA 2021~22 Regular Season</h1>
-<p onclick="update('conference')">Light blue: Western conference</p>
-<p>Dark blue: Eastern conference</p>
 
 <!-- Add buttons -->
 <button onclick="update('FGM')">FGM</button>
@@ -62,7 +59,7 @@ const yAxis = svg.append("g")
 function update(selectedVar) {
 
   // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/WayneLin552/nba_2021_analyze/main/docs/data/regular.csv").then( function(data) {
+  d3.csv("https://raw.githubusercontent.com/WayneLin552/nba_2021_analyze/main/docs/data/playoff.csv").then( function(data) {
 
     // X axis
     x.domain(data.map(d => d.Team));
@@ -85,8 +82,8 @@ function update(selectedVar) {
       .attr("class","myLine")
       .transition()
       .duration(1000)
-        .attr("x1", d => x(d.Team)+5.8)
-        .attr("x2", d => x(d.Team)+5.8)
+        .attr("x1", d => x(d.Team)+10)
+        .attr("x2", d => x(d.Team)+10)
         .attr("y1", y(0))
         .attr("y2", d => y(d[selectedVar]))
         .attr("stroke","grey")
@@ -99,56 +96,7 @@ function update(selectedVar) {
       .join("circle")
       .transition()
       .duration(1000)
-        .attr("cx", d => x(d.Team)+5.8)
-        .attr("cy", d => y(d[selectedVar]))
-        .attr("r", 5)
-        .attr("fill", getColor)
-  })
-
-}
-
-// A function that create / update the plot for a given variable:
-function update2(selectedVar) {
-
-  // Parse the Data
-  d3.csv("https://raw.githubusercontent.com/WayneLin552/nba_2021_analyze/main/docs/data/regular.csv").then( function(data) {
-
-    // X axis
-    x.domain(data.map(d => d.Team));
-    xAxis.transition().duration(1000)
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-    .attr("transform", "translate(-10,0)rotate(-45)")
-    .style("text-anchor", "end");
-
-    // Add Y axis
-    y.domain([0, d3.max(data, d => +d[selectedVar]) ]);
-    yAxis.transition().duration(1000).call(d3.axisLeft(y));
-
-    // variable u: map data to existing bars
-    const u = svg.selectAll(".myLine")
-      .data(data)
-
-    // update bars
-    u.join("line")
-      .attr("class","myLine")
-      .transition()
-      .duration(1000)
-        .attr("x1", d => x(d.Team)+5.8)
-        .attr("x2", d => x(d.Team)+5.8)
-        .attr("y1", y(0))
-        .attr("y2", d => y(d[selectedVar]))
-        .attr("stroke","grey")
-        
-        //.attr("height", d => height - y(d[selectedVar]))
-        //.attr("fill", getColor)
-    const j = svg.selectAll("circle")
-      .data(data)
-    j
-      .join("circle")
-      .transition()
-      .duration(1000)
-        .attr("cx", d => x(d.Team)+5.8)
+        .attr("cx", d => x(d.Team)+10)
         .attr("cy", d => y(d[selectedVar]))
         .attr("r", 5)
         .attr("fill", getColor)
@@ -159,7 +107,4 @@ function update2(selectedVar) {
 
 // Initialize plot
 update('FGM')
-
-//function goyellow() {d3.select(this).attr("color", "yellow")};
-//d3.selectAll("p").on("mouseover",goyellow)
 </script>
