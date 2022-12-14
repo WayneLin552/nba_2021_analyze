@@ -1,1 +1,5 @@
 # Interactive component
+
+For the interactive component part, please click on this link below to access it:
+
+**[Interactive Link](interaction_demo.html)**
