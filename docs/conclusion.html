@@ -23,7 +23,7 @@
 <meta name="author" content="Mouwei Lin (lm3756); Frank Li (zl3204); Linhao Yu (ly2590)" />
 
 
-<meta name="date" content="2022-11-15" />
+<meta name="date" content="2022-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,7 +84,15 @@
 <li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
 <li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#points-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.1</b> Points with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#point-field-goals-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.2</b> Point Field Goals with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#field-goal-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.3</b> Field Goal with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#free-throw-with-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.4</b> Free Throw with Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.5" data-path="results.html"><a href="results.html#rebounds-made-and-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.5</b> Rebounds made and Rank in Playoff and Regular Season</a></li>
+<li class="chapter" data-level="4.6" data-path="results.html"><a href="results.html#personal-fouls-made-and-rank-in-playoff-and-regular-season"><i class="fa fa-check"></i><b>4.6</b> Personal Fouls made and Rank in Playoff and Regular Season</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
 <li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
 <li class="divider"></li>
@@ -108,6 +116,15 @@
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Conclusion<a href="conclusion.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We have obtained a broad view on the NBA’s data, and perfermed several analysis. In this final project, our focus is on data of NBA regular season and playoffs in season 2021-2022. The major goal for our project is determining the relationship between the factors, and tried to explore which of them are keys factors for a team to win.</p>
+<p>In regular season, we have analyzed each team’s performance base on conference. Performance includes: field goals made(FGM), 3 point field goals made(3PM), free throws made(FTM), assists(AST), offensive rebounds(OREB), defensive rebounds(DREB), blocks(BLK) and steals(STL). Among these features, FGM, 3PM, FTM, AST and OREB are categorized to be offensive statistics since they are related to a team’s offensive performance. DREB, BLK and STL are considered as defensive statistics since they reveal the defense level of a team. In playoffs, we did similar analyze like regular season. Then we discussed why those teams perform better than those that can not enter the playoffs.</p>
+<p>As from the result sections, we obtained several conclustions from the analysis:</p>
+<p><strong>1.</strong> We found that strong teams (who enter playoff) have both the high 3 point goals made and 3 point goals percentage. Top ranked teams among weak teams (do not enter playoff) have both low 3 point goals made and 3 point goals percentage. However, those last few teams have a very high 3 point goals made but lowest 3 point goals percentage. It can be explained by the level gap. Strong teams are always strong, they can make 3 point easier and offensive efficiently. Top ranked teams among weak teams may have good offensive abilities, but they lack the 3 points goals to open up the gap in order to win, that’s why they lose.</p>
+<p><strong>2.</strong> For the general field goals performance. This is the most critical factor that reflects a team’s performance because most of the time, a team win points through general field goals. In playoff, although the trend is very weak, field goals made drops slightly as rank drops while in field goals percentage, they are quite similar. That means each team’s shooting percentage is similar, all of them can shoot very good. However, stronger teams have more opportunities to shoot because of their stronger offensive abilities. That’s why they can win. And we can conclude that although each team in playoff is strong, they still have subtle level gap. In regular season this trend becomes very notable. Strong teams always have higher field goals made and field goals percentage while weak teams have lower. They have a very clear level gap.</p>
+<p><strong>3.</strong> For the effect of Free throws, Intuitively thinking, Free throws serve as a supporting factor for winning, not the key factor, since Free Throws only worth one point each, and the accuracy depends on the player heavily. We should not expect more Free Throws resulting in higher rank. As expected, in Playoff the Free Throws made does not lead to a higher ranking. In fact, the team in the first place even has a low amount of Free Throws made. This happened again in the analysis in Regular Season, in Regular Season the Free Throws made also does not lead to a higher ranking. In fact, the team in the first place even has a low amount of Free Throws made in general.</p>
+<p><strong>4.</strong> For the effect of Rebounds, Intuitively thinking, Rebounds made serve as a key factor for winning, since each rebound means the opportunity for a team to be ofensive, and have the change to score points. We should expect more rebounds being made resulting in higher rank. As expected, in Playoff the Rebounds made does lead to a higher ranking. In fact, the team in the first place even has a high amount of rebounds made. This happened again in the analysis in Regular Season more obviously, in Regular Season the rebounds made also leads to a higher ranking. In fact, the team in the first place even has a how amount of rebounds made in general.</p>
+<p><strong>5.</strong> For the effect of Personal Fouls, Intuitively thinking, Personal Fouls should have a negative correlation with ranking, since Personal Fouls will provide more attacking chance for the opposite team, and the player might have to retreat. We should expect less Personal Fouls in higher rank. As expected, in Playoff less Personal Fouls does lead to a higher ranking. In fact, the team in the first place even has a low amount of Personal Fouls. This does not happened again in the analysis in Regular Season, in Regular Season less Personal Fouls does not lead to a higher ranking from the plot. One of the reasons could be the skill differences are to large between teams. Personal Fouls factor is not strong enough to secure a high rank, although more attacking opportunities were provided.</p>
+<p>All the above conclusion seems to be reasonable for determining the path for the competition of each team, in the basketball perspective:</p>
 
 </div>
             </section>
